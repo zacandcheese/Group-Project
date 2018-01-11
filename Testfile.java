@@ -22,8 +22,8 @@ public class Testfile{
         frame.setSize(3000, 4000);
         frame.setTitle("An Empty Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setVisible(true);
+        
    }
    public static void main(String[] args){
       Testfile m = new Testfile();
