@@ -20,7 +20,6 @@ public class Testfile{
         };
 
         frame.setSize(3000, 4000);
-        //frame.pack();
         frame.setTitle("An Empty Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
