@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.*;
 import java.awt.*;
 
-public class FINAL{
+public class FINAL extends JFrame {//implements ActionListener{
    private JLabel person;     // person
    private JTextField name;  // there name
    private JButton letterAccent;
@@ -146,6 +146,53 @@ public class FINAL{
       letterShiftWro = new JButton("Shift");
       letterSpace = new JButton(" ");*/
       
+       // Use a GridBagLayout
+      GridBagConstraints c = null;
+      GridBagLayout gridbag = new GridBagLayout();
+      setLayout(gridbag);
+      c = new GridBagConstraints();
+      setFont(new Font("SansSerif", Font.PLAIN, 14));
+
+       c.fill = GridBagConstraints.BOTH;
+       c.weightx = 1.0;
+       add(letterQ,c);
+       add(letterW,c);
+       c.gridwidth = GridBagConstraints.REMAINDER; //end row
+       letterA.setPreferredSize(new Dimension(100, 26));//Change Btn Size
+       add(letterA,c);
+
+       c.weightx = 0.0;                //reset to the default
+       add(letterZ,c);
+
+       c.gridwidth = GridBagConstraints.RELATIVE; //next-to-last in row
+       add(letterC,c);
+
+       c.gridwidth = GridBagConstraints.REMAINDER; //end row
+       add(letterO,c);
+
+        c.gridwidth = 1;                //reset to the default
+        c.gridheight = 2;
+        c.weighty = 1.0;
+        add(letterR,c);
+
+        c.weighty = 0.0;                //reset to the default
+        c.gridwidth = GridBagConstraints.REMAINDER; //end row
+        c.gridheight = 1;               //reset to the default
+        add(letterS, c);
+        add(letterD,c);
+            
       
+   }
+    /* Creates a SalaryCalculatorFrame and makes it visible */
+   public static void main(String[] args) {
+      // Creates SalaryLabelFrame and its components
+      FINAL myFrame = new FINAL();
+      myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      myFrame.pack();
+      myFrame.setVisible(true);
+
+      return;
+   }
+
 
 }
