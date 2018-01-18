@@ -7,11 +7,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
 //Added These to Change BTN Size
 import javax.swing.*;
 import java.awt.*;
+import java.*;
+import javax.*;
+
 
 public class Practice extends JFrame implements ActionListener {
+   private AudioInputStream clipNameAIS;
+   private Clip clipNameClip;
    private JLabel person;     // Label for hourly salary
    private JTextField name;  // Displays hourly salary 
    private JButton letterAccent;
@@ -70,7 +78,6 @@ public class Practice extends JFrame implements ActionListener {
    private JButton letterSpace;
    private JTextField write;
    private String typed = ""; // User specified hourly wage
-   
    /* Constructor creates GUI components and adds GUI components
       using a GridBagLayout. */
    Practice() {
@@ -146,13 +153,14 @@ public class Practice extends JFrame implements ActionListener {
       letterFSlash = new JButton("/");
       letterShiftWro = new JButton("Shift");
       letterSpace = new JButton(" ");*/
+
       deleteKey.setPreferredSize(new Dimension(100, 26));//Change Btn Size
-      
       // Use "this" class to handle button presses
       letterA.addActionListener(this);
       letterS.addActionListener(this);
       deleteKey.addActionListener(this);
       letterQ.addActionListener(this);
+      letterB.addActionListener(this);
       //IF SOMEONE WANTS TO MESS WITH THE SIDES
       //https://docs.oracle.com/javase/7/docs/api/java/awt/GridBagLayout.html
       
@@ -248,6 +256,18 @@ public class Practice extends JFrame implements ActionListener {
             if(typed.length()>0){
                typed = typed.substring(0,typed.length()-1);
             }
+         }
+         else if(sourceEvent == letterB){
+            //Code from: http://www.dreamincode.net/forums/topic/226315-wav-file-to-play-when-button-pressed/
+            //constructor/initialization
+            try{
+               clipNameAIS = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("GucciGang.wav"));
+               clipNameClip = AudioSystem.getClip();
+               clipNameClip.open(clipNameAIS);
+            }catch(Exception e){System.out.println("Failure to load sound");}
+            //Action where .wav is played
+            clipNameClip.setFramePosition(0);
+            clipNameClip.start();
          }
          else{
             typed+=sourceEvent.getText();

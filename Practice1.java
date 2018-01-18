@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class PracticeWithTextArea extends JFrame implements ActionListener {
+public class Practice1 extends JFrame implements ActionListener {
    private JLabel person;     // Label for hourly salary
    private JTextField name;  // Displays hourly salary 
    private JButton letterA;   // Triggers salary calculation
@@ -25,7 +25,7 @@ public class PracticeWithTextArea extends JFrame implements ActionListener {
    
    /* Constructor creates GUI components and adds GUI components
       using a GridBagLayout. */
-   PracticeWithTextArea() {
+   Practice1() {
       // Used to specify GUI component layout
       GridBagConstraints positionConst = null;
 
@@ -134,7 +134,7 @@ public class PracticeWithTextArea extends JFrame implements ActionListener {
    /* Creates a SalaryCalculatorFrame and makes it visible */
    public static void main(String[] args) {
       // Creates SalaryLabelFrame and its components
-      Practice myFrame = new Practice();
+      Practice1 myFrame = new Practice1();
       myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       myFrame.pack();
       myFrame.setVisible(true);
