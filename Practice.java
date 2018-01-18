@@ -16,6 +16,7 @@ public class Practice extends JFrame implements ActionListener {
    private JTextField name;  // Displays hourly salary 
    private JButton letterA;   // Triggers salary calculation
    private JButton letterB;
+   private JButton letterQ;
    private JTextField write;
    private String typed = ""; // User specified hourly wage
    private JButton deleteKey;
@@ -42,14 +43,18 @@ public class Practice extends JFrame implements ActionListener {
       // Create a "Calculate" button
       letterA = new JButton("A");
       letterB = new JButton("B");
+      letterQ = new JButton("Q");
       deleteKey = new JButton("Delete");
-      deleteKey.setPreferredSize(new Dimension(100, 40));//Change Btn Size
+      deleteKey.setPreferredSize(new Dimension(100, 26));//Change Btn Size
       
       // Use "this" class to handle button presses
       letterA.addActionListener(this);
       letterB.addActionListener(this);
       deleteKey.addActionListener(this);
-
+      letterQ.addActionListener(this);
+      //IF SOMEONE WANTS TO MESS WITH THE SIDES
+      //https://docs.oracle.com/javase/7/docs/api/java/awt/GridBagLayout.html
+      
       // Use a GridBagLayout
       setLayout(new GridBagLayout());
       positionConst = new GridBagConstraints();
@@ -62,13 +67,16 @@ public class Practice extends JFrame implements ActionListener {
 
       positionConst.gridx = 0;
       positionConst.gridy = 1;
-      positionConst.insets = new Insets(1, 1, 1, 1);
+      positionConst.insets = new Insets(0, 0, 0, 0);
       add(write, positionConst);
       
       //Keys
       positionConst.gridx = 1;
+      positionConst.gridy = 1;
+      add(letterQ, positionConst);
+
+      positionConst.gridx = 1;
       positionConst.gridy = 2;
-      positionConst.insets = new Insets(1, 1, 1, 1);
       add(letterA, positionConst);
       
       positionConst.gridx = 2;
