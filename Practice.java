@@ -106,6 +106,7 @@ public class Practice extends JFrame implements ActionListener {
       letterEqua = new JButton("=");
       deleteKey = new JButton("Backspace");
       letterTab = new JButton("   ");*/
+      deleteKey = new JButton("Backspace");
       letterQ = new JButton("Q");
       letterW = new JButton("W");
       letterE = new JButton("E");
@@ -216,14 +217,11 @@ public class Practice extends JFrame implements ActionListener {
       
       positionConst.gridx = 2;
       positionConst.gridy = 2;
-<<<<<<< HEAD
       positionConst.gridwidth = GridBagConstraints.RELATIVE; //next-to-last in row
-=======
       add(letterS, positionConst);
       
       positionConst.gridx = 3;
       positionConst.gridy = 2;
->>>>>>> b42604d23cd645e6f0ec0d1d086efe4479bd8a57
       add(deleteKey, positionConst);
       
       //positionConst.gridx = 3;
