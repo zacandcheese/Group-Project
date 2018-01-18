@@ -165,6 +165,41 @@ public class Practice extends JFrame implements ActionListener {
       // 10 pixels of padding around component
       //positionConst.insets = new Insets(10, 10, 10, 10);
 
+   /*
+   
+         setFont(new Font("SansSerif", Font.PLAIN, 14));
+         setLayout(gridbag);
+
+         c.fill = GridBagConstraints.BOTH;
+         c.weightx = 1.0;
+         makebutton("Button1", gridbag, c);
+         makebutton("Button2", gridbag, c);
+         makebutton("Button3", gridbag, c);
+
+         c.gridwidth = GridBagConstraints.REMAINDER; //end row
+         makebutton("Button4", gridbag, c);
+
+         c.weightx = 0.0;                //reset to the default
+         makebutton("Button5", gridbag, c); //another row
+
+         c.gridwidth = GridBagConstraints.RELATIVE; //next-to-last in row
+         makebutton("Button6", gridbag, c);
+
+         c.gridwidth = GridBagConstraints.REMAINDER; //end row
+         makebutton("Button7", gridbag, c);
+
+         c.gridwidth = 1;                //reset to the default
+         c.gridheight = 2;
+         c.weighty = 1.0;
+         makebutton("Button8", gridbag, c);
+
+         c.weighty = 0.0;                //reset to the default
+         c.gridwidth = GridBagConstraints.REMAINDER; //end row
+         c.gridheight = 1;               //reset to the default
+         makebutton("Button9", gridbag, c);
+         makebutton("Button10", gridbag, c);
+
+   */
       positionConst.gridx = 0;
       positionConst.gridy = 1;
       positionConst.insets = new Insets(0, 0, 0, 0);
@@ -181,11 +216,22 @@ public class Practice extends JFrame implements ActionListener {
       
       positionConst.gridx = 2;
       positionConst.gridy = 2;
+<<<<<<< HEAD
+      positionConst.gridwidth = GridBagConstraints.RELATIVE; //next-to-last in row
+=======
       add(letterS, positionConst);
       
       positionConst.gridx = 3;
       positionConst.gridy = 2;
+>>>>>>> b42604d23cd645e6f0ec0d1d086efe4479bd8a57
       add(deleteKey, positionConst);
+      
+      //positionConst.gridx = 3;
+      positionConst.gridy = 3;
+      positionConst.weighty = 0.0;                //reset to the default
+      positionConst.gridwidth = GridBagConstraints.REMAINDER; //end row
+      positionConst.gridheight = 1;               //reset to the default
+      add(letterB, positionConst);
    }
 
    /* Method is automatically called when an event 
