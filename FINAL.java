@@ -70,7 +70,8 @@ public class FINAL extends JFrame {//implements ActionListener{
    private JButton letterSpace;
    private JTextField write;
    private String typed = ""; // User specified hourly wage
-   
+   private JButton BLANK;
+   private JButton BLANK1;
    
      FINAL() {
       // Used to specify GUI component layout
@@ -104,7 +105,8 @@ public class FINAL extends JFrame {//implements ActionListener{
       letterDash = new JButton("-");
       letterEqua = new JButton("=");
       deleteKey = new JButton("Backspace");
-      letterTab = new JButton("   ");*/
+      */
+      letterTab = new JButton("TAB");
       deleteKey = new JButton("Backspace");
       letterQ = new JButton("Q");
       letterW = new JButton("W");
@@ -118,8 +120,8 @@ public class FINAL extends JFrame {//implements ActionListener{
       letterP = new JButton("P");
       /*letterOpBrak = new JButton("[");
       letterCloBrak = new JButton("]");
-      letterBSlash = new JButton("\\");
-      letterCapLock = new JButton("Caps Lock");*/
+      letterBSlash = new JButton("\\");*/
+      letterCapLock = new JButton("Caps Lock");
       letterA = new JButton("A");
       letterS = new JButton("S");
       letterD = new JButton("D");
@@ -145,43 +147,62 @@ public class FINAL extends JFrame {//implements ActionListener{
       letterFSlash = new JButton("/");
       letterShiftWro = new JButton("Shift");
       letterSpace = new JButton(" ");*/
-      
+      BLANK = new JButton("");
+      BLANK1 = new JButton("");
        // Use a GridBagLayout
       GridBagConstraints c = null;
       GridBagLayout gridbag = new GridBagLayout();
       setLayout(gridbag);
       c = new GridBagConstraints();
-      setFont(new Font("SansSerif", Font.PLAIN, 14));
+      setFont(new Font("SansSerif", Font.PLAIN, 40));
 
-       c.fill = GridBagConstraints.BOTH;
+      //TAB qwertyuiop
+       c.fill = GridBagConstraints.BOTH;      
        c.weightx = 1.0;
+       //c.gridwidth = GridBagConstraints.RELATIVE;
+       add(letterTab,c);
+       //c.gridwidth = 10;
        add(letterQ,c);
        add(letterW,c);
-       c.gridwidth = GridBagConstraints.REMAINDER; //end row
-       letterA.setPreferredSize(new Dimension(100, 26));//Change Btn Size
-       add(letterA,c);
-
-       c.weightx = 0.0;                //reset to the default
-       add(letterZ,c);
-
-       c.gridwidth = GridBagConstraints.RELATIVE; //next-to-last in row
-       add(letterC,c);
-
-       c.gridwidth = GridBagConstraints.REMAINDER; //end row
+       add(letterE,c);
+       add(letterR,c);
+       add(letterT,c);
+       add(letterY,c);
+       add(letterU,c);
+       add(letterI,c);
        add(letterO,c);
-
-        c.gridwidth = 1;                //reset to the default
-        c.gridheight = 2;
-        c.weighty = 1.0;
-        add(letterR,c);
-
-        c.weighty = 0.0;                //reset to the default
-        c.gridwidth = GridBagConstraints.REMAINDER; //end row
-        c.gridheight = 1;               //reset to the default
-        add(letterS, c);
-        add(letterD,c);
-            
-      
+       c.gridwidth = GridBagConstraints.REMAINDER;
+       add(letterP,c);
+       
+       //CAPS LOCK asdfghjkl
+        c.gridwidth = 2;                //reset to the default
+         c.gridheight = 1;
+         c.weightx = 1.0;
+         c.weighty = 1.0;
+         add(letterCapLock,c);
+         
+         c.gridwidth = 1;
+         c.weighty = 0.0;
+         c.gridheight = 1;               //reset to the default
+         add(letterA,c);
+         add(letterB,c);
+         
+       c.gridwidth = GridBagConstraints.REMAINDER;
+         add(letterC,c);
+         
+         c.gridwidth = 1;
+         c.gridheight = 1;
+         c.weightx = 1.0;
+         c.weighty = 0.0;
+         c.gridheight = 2;
+         add(letterZ,c);
+              /*
+      add(letterD,c);
+      add(letterF,c);
+      add(letterG,c);
+      add(letterH,c);
+      add(letterJ,c);
+      add(letterK,c);*/      
    }
     /* Creates a SalaryCalculatorFrame and makes it visible */
    public static void main(String[] args) {
