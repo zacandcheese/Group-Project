@@ -85,7 +85,8 @@ public class FINAL extends JFrame implements ActionListener{
    //AUDIO
    private AudioInputStream clipNameAIS;
    private Clip clipNameClip;
-   
+   private boolean isLocked = false;
+   private boolean isShifted = false;
      FINAL() {
       // Used to specify GUI component layout
       GridBagConstraints positionConst = null;
@@ -128,7 +129,7 @@ public class FINAL extends JFrame implements ActionListener{
       letterShiftWro = new JButton("Shift");
       space = new JButton("Space");
       gucci = new JButton("Gucci Gang");
-      star = new JButton("***\n\n\n\n***");
+      star = new JButton("APPLE ROSEGOLD");
       
        // Use a GridBagLayout
       GridBagConstraints c = null;
@@ -136,7 +137,7 @@ public class FINAL extends JFrame implements ActionListener{
       setLayout(gridbag);
       c = new GridBagConstraints();
       setFont(new Font("SansSerif", Font.PLAIN, 40));
-
+      c.weighty = 1.0;
       //FIRST ROW
        c.fill = GridBagConstraints.BOTH;      
        c.weightx = 1.0;
@@ -170,11 +171,9 @@ public class FINAL extends JFrame implements ActionListener{
         c.gridwidth = 2;
         c.gridheight = 1;
         c.weightx = 1.0;
-        c.weighty = 1.0;
         add(letterCapLock,c); 
         letterCapLock.addActionListener(this);   
         c.gridwidth = 1;
-        c.weighty = 0.0;
         c.gridheight = 1;
         add(letterA,c);
         letterA.addActionListener(this);
@@ -202,19 +201,26 @@ public class FINAL extends JFrame implements ActionListener{
          c.gridwidth = 3;
          c.gridheight = 1;
          c.weightx = 1.0;
-         c.weighty = 0.0;
          c.gridheight = 1;
          add(letterShiftWro,c);
+         letterShiftWro.addActionListener(this);
          c.gridwidth = 1;
          c.weighty = 0.0;
          c.gridheight = 1;   
          add(letterZ,c);
+         letterZ.addActionListener(this);
          add(letterX,c);
+         letterX.addActionListener(this);
          add(letterC,c);
+         letterC.addActionListener(this);
          add(letterV,c);
+         letterV.addActionListener(this);
          add(letterB,c);
+         letterB.addActionListener(this);
          add(letterN,c);
-         add(letterM,c);     
+         letterN.addActionListener(this);
+         add(letterM,c);
+         letterM.addActionListener(this);     
          c.gridwidth = GridBagConstraints.REMAINDER;
          add(BLANK,c);
          
@@ -228,6 +234,7 @@ public class FINAL extends JFrame implements ActionListener{
          c.weighty = 0.0;
          c.gridheight = 1;   
          add(space,c);
+         space.addActionListener(this);
          c.gridwidth = GridBagConstraints.REMAINDER;
          add(gucci,c);
          gucci.addActionListener(this);
@@ -245,14 +252,9 @@ public class FINAL extends JFrame implements ActionListener{
    }
    @Override
       public void actionPerformed(ActionEvent event) {
-         // Get source of event (2 buttons in GUI)
+         // Get source of event (2+ buttons in GUI)
          JButton sourceEvent = (JButton) event.getSource();
-
-         // User pressed the reserve button
-         /*if (sourceEvent == letterA) {
-            write.setText(typed+"A");
-            typed+="A";
-         }*/
+           
          if(sourceEvent == deleteKey){
             if(typed.length()>0){
                typed = typed.substring(0,typed.length()-1);
@@ -260,6 +262,23 @@ public class FINAL extends JFrame implements ActionListener{
          }
          else if(sourceEvent == letterEnter){
             typed+="\n";
+         }
+         else if(sourceEvent == space){
+            typed+=" ";
+         }
+         else if(sourceEvent == letterTab){
+            typed+="   ";
+         }
+         else if(sourceEvent == letterCapLock){
+            if(isLocked){
+               isLocked = false;
+            }
+            else{
+               isLocked = true;
+            }
+         }
+         else if(sourceEvent == letterShiftWro){
+            isShifted = true;
          }
          else if(sourceEvent == gucci){
          try{
@@ -273,20 +292,28 @@ public class FINAL extends JFrame implements ActionListener{
 
          }
          else{
-            typed+=sourceEvent.getText();
+            if(isLocked && isShifted){
+               typed+=sourceEvent.getText().toLowerCase();
+               isShifted = false;
+            }
+            else if(isLocked || isShifted){
+               typed+=sourceEvent.getText();
+               isShifted = false;
+            }
+            else{
+               typed+=sourceEvent.getText().toLowerCase();
+            }
          }
          output.setText(typed);
 
          
          return;
    }
-
-
-   
    public static void main(String[] args) {
       // Creates SalaryLabelFrame and its components
       FINAL myFrame = new FINAL();
       myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      myFrame.getContentPane().setBackground(Color.PINK);
       myFrame.pack();
       myFrame.setVisible(true);
 
