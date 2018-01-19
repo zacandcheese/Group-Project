@@ -7,13 +7,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
 //Added These to Change BTN Size
 import javax.swing.*;
 import java.awt.*;
 
-public class FINAL extends JFrame {//implements ActionListener{
-   private JLabel person;     // person
-   private JTextField name;  // there name
+public class FINAL extends JFrame implements ActionListener{
+   private JLabel person;    
+   private JTextField name;  
    private JButton letterAccent;
    private JButton letterOne;
    private JButton letterTwo;
@@ -43,7 +47,7 @@ public class FINAL extends JFrame {//implements ActionListener{
    private JButton letterCloBrak;
    private JButton letterBSlash;
    private JButton letterCapLock;
-   private JButton letterA;   // Triggers salary calculation
+   private JButton letterA;   
    private JButton letterS;
    private JButton letterD;
    private JButton letterF;
@@ -69,9 +73,18 @@ public class FINAL extends JFrame {//implements ActionListener{
    private JButton letterShiftTwo;
    private JButton letterSpace;
    private JTextField write;
-   private String typed = ""; // User specified hourly wage
+   private String typed = ""; 
    private JButton BLANK;
    private JButton BLANK1;
+   private JButton letterShiftWro;
+   private JButton space;
+   private JButton gucci;
+   private JButton star;
+   //TEXT AREA
+   private JTextArea output;
+   //AUDIO
+   private AudioInputStream clipNameAIS;
+   private Clip clipNameClip;
    
      FINAL() {
       // Used to specify GUI component layout
@@ -79,33 +92,7 @@ public class FINAL extends JFrame {//implements ActionListener{
 
       // Set frame's title
       setTitle("Keyboard");
-
-      // Set hourly and yearly salary labels
-      person = new JLabel("PERSON");
-
-      //name = new JTextField(15);
-      //name.setEditable(true);
-      //name.setText("name");
-
-      write = new JTextField(20);
-      write.setEditable(false);
       
-      // Create a "Calculate" button
-      /*letterAccent = new JButton("`");
-      letterOne = new JButton("1");
-      letterTwo = new JButton("2");
-      letterThree = new JButton("3");
-      letterFour = new JButton("4");
-      letterFive = new JButton("5");
-      letterSix = new JButton("6");
-      letterSeven = new JButton("7");
-      letterEight = new JButton("8");
-      letterNine = new JButton("9");
-      letterZero = new JButton("0");
-      letterDash = new JButton("-");
-      letterEqua = new JButton("=");
-      deleteKey = new JButton("Backspace");
-      */
       letterTab = new JButton("TAB");
       deleteKey = new JButton("Backspace");
       letterQ = new JButton("Q");
@@ -118,9 +105,6 @@ public class FINAL extends JFrame {//implements ActionListener{
       letterI = new JButton("I");
       letterO = new JButton("O");
       letterP = new JButton("P");
-      /*letterOpBrak = new JButton("[");
-      letterCloBrak = new JButton("]");
-      letterBSlash = new JButton("\\");*/
       letterCapLock = new JButton("Caps Lock");
       letterA = new JButton("A");
       letterS = new JButton("S");
@@ -131,10 +115,7 @@ public class FINAL extends JFrame {//implements ActionListener{
       letterJ = new JButton("J");
       letterK = new JButton("K");
       letterL = new JButton("L");
-      /*letterSemiCol = new JButton(";");
-      letterApo = new JButton("'");
       letterEnter = new JButton("Enter");;
-      letterShiftOne = new JButton("Shift");*/
       letterZ = new JButton("Z");
       letterX = new JButton("X");
       letterC = new JButton("C");
@@ -142,13 +123,13 @@ public class FINAL extends JFrame {//implements ActionListener{
       letterB = new JButton("B");
       letterN = new JButton("N");
       letterM = new JButton("M");
-      /*letterComma = new JButton(",");
-      letterPeriod = new JButton(".");
-      letterFSlash = new JButton("/");
-      letterShiftWro = new JButton("Shift");
-      letterSpace = new JButton(" ");*/
       BLANK = new JButton("");
       BLANK1 = new JButton("");
+      letterShiftWro = new JButton("Shift");
+      space = new JButton("Space");
+      gucci = new JButton("Gucci Gang");
+      star = new JButton("***\n\n\n\n***");
+      
        // Use a GridBagLayout
       GridBagConstraints c = null;
       GridBagLayout gridbag = new GridBagLayout();
@@ -156,55 +137,152 @@ public class FINAL extends JFrame {//implements ActionListener{
       c = new GridBagConstraints();
       setFont(new Font("SansSerif", Font.PLAIN, 40));
 
-      //TAB qwertyuiop
+      //FIRST ROW
        c.fill = GridBagConstraints.BOTH;      
        c.weightx = 1.0;
-       //c.gridwidth = GridBagConstraints.RELATIVE;
        add(letterTab,c);
-       //c.gridwidth = 10;
+       letterTab.addActionListener(this);
        add(letterQ,c);
+       letterQ.addActionListener(this);
        add(letterW,c);
+       letterW.addActionListener(this);
        add(letterE,c);
+       letterE.addActionListener(this);
        add(letterR,c);
+       letterR.addActionListener(this);
        add(letterT,c);
+       letterT.addActionListener(this);
        add(letterY,c);
+       letterY.addActionListener(this);
        add(letterU,c);
+       letterU.addActionListener(this);
        add(letterI,c);
+       letterI.addActionListener(this);
        add(letterO,c);
-       c.gridwidth = GridBagConstraints.REMAINDER;
+       letterO.addActionListener(this);
        add(letterP,c);
+       letterP.addActionListener(this);
+       c.gridwidth = GridBagConstraints.REMAINDER;
+       add(deleteKey,c);
+       deleteKey.addActionListener(this);
        
-       //CAPS LOCK asdfghjkl
-        c.gridwidth = 2;                //reset to the default
+       //SECOND ROW
+        c.gridwidth = 2;
+        c.gridheight = 1;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        add(letterCapLock,c); 
+        letterCapLock.addActionListener(this);   
+        c.gridwidth = 1;
+        c.weighty = 0.0;
+        c.gridheight = 1;
+        add(letterA,c);
+        letterA.addActionListener(this);
+        add(letterS,c);
+        letterS.addActionListener(this);
+        add(letterD,c);
+        letterD.addActionListener(this);
+        add(letterF,c);
+        letterF.addActionListener(this);
+        add(letterG,c);
+        letterG.addActionListener(this);
+        add(letterH,c);
+        letterH.addActionListener(this);
+        add(letterJ,c);
+        letterJ.addActionListener(this);
+        add(letterK,c);
+        letterK.addActionListener(this);
+        add(letterL,c);
+        letterL.addActionListener(this);
+        c.gridwidth = GridBagConstraints.REMAINDER;
+        add(letterEnter,c);
+        letterEnter.addActionListener(this);
+        
+        //THIRD ROW         
+         c.gridwidth = 3;
+         c.gridheight = 1;
+         c.weightx = 1.0;
+         c.weighty = 0.0;
+         c.gridheight = 1;
+         add(letterShiftWro,c);
+         c.gridwidth = 1;
+         c.weighty = 0.0;
+         c.gridheight = 1;   
+         add(letterZ,c);
+         add(letterX,c);
+         add(letterC,c);
+         add(letterV,c);
+         add(letterB,c);
+         add(letterN,c);
+         add(letterM,c);     
+         c.gridwidth = GridBagConstraints.REMAINDER;
+         add(BLANK,c);
+         
+        //FOURTH ROW
+         c.gridwidth = 2;
          c.gridheight = 1;
          c.weightx = 1.0;
          c.weighty = 1.0;
-         add(letterCapLock,c);
-         
-         c.gridwidth = 1;
+         add(BLANK1,c);
+         c.gridwidth = GridBagConstraints.RELATIVE;
          c.weighty = 0.0;
-         c.gridheight = 1;               //reset to the default
-         add(letterA,c);
-         add(letterB,c);
+         c.gridheight = 1;   
+         add(space,c);
+         c.gridwidth = GridBagConstraints.REMAINDER;
+         add(gucci,c);
+         gucci.addActionListener(this);
          
-       c.gridwidth = GridBagConstraints.REMAINDER;
-         add(letterC,c);
-         
-         c.gridwidth = 1;
-         c.gridheight = 1;
-         c.weightx = 1.0;
-         c.weighty = 0.0;
-         c.gridheight = 2;
-         add(letterZ,c);
-              /*
-      add(letterD,c);
-      add(letterF,c);
-      add(letterG,c);
-      add(letterH,c);
-      add(letterJ,c);
-      add(letterK,c);*/      
+         //SCROLL TEXT BOX
+         output = new JTextArea(10, 10);
+         JScrollPane scroll = new JScrollPane(output); 
+         output.setEditable(false);
+         c.insets = new Insets(10, 10, 10 ,10);
+         c.fill = GridBagConstraints.HORIZONTAL;
+         c.gridwidth = 6;
+         add(scroll, c);
+         c.gridwidth = GridBagConstraints.REMAINDER;
+         add(star,c);
    }
-    /* Creates a SalaryCalculatorFrame and makes it visible */
+   @Override
+      public void actionPerformed(ActionEvent event) {
+         // Get source of event (2 buttons in GUI)
+         JButton sourceEvent = (JButton) event.getSource();
+
+         // User pressed the reserve button
+         /*if (sourceEvent == letterA) {
+            write.setText(typed+"A");
+            typed+="A";
+         }*/
+         if(sourceEvent == deleteKey){
+            if(typed.length()>0){
+               typed = typed.substring(0,typed.length()-1);
+            }
+         }
+         else if(sourceEvent == letterEnter){
+            typed+="\n";
+         }
+         else if(sourceEvent == gucci){
+         try{
+               clipNameAIS = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("GucciGang.wav"));
+               clipNameClip = AudioSystem.getClip();
+               clipNameClip.open(clipNameAIS);
+            }catch(Exception e){System.out.println("Failure to load sound");}
+            //Action where .wav is played
+            clipNameClip.setFramePosition(0);
+            clipNameClip.start();
+
+         }
+         else{
+            typed+=sourceEvent.getText();
+         }
+         output.setText(typed);
+
+         
+         return;
+   }
+
+
+   
    public static void main(String[] args) {
       // Creates SalaryLabelFrame and its components
       FINAL myFrame = new FINAL();
