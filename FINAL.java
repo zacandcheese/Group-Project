@@ -129,7 +129,7 @@ public class FINAL extends JFrame implements ActionListener{
       letterShiftWro = new JButton("Shift");
       space = new JButton("Space");
       gucci = new JButton("Gucci Gang");
-      star = new JButton("APPLE ROSEGOLD");
+      star = new JButton("Clear");
       
        // Use a GridBagLayout
       GridBagConstraints c = null;
