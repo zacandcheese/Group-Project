@@ -249,6 +249,7 @@ public class FINAL extends JFrame implements ActionListener{
          add(scroll, c);
          c.gridwidth = GridBagConstraints.REMAINDER;
          add(star,c);
+         star.addActionListener(this); 
    }
    @Override
       public void actionPerformed(ActionEvent event) {
@@ -259,6 +260,9 @@ public class FINAL extends JFrame implements ActionListener{
             if(typed.length()>0){
                typed = typed.substring(0,typed.length()-1);
             }
+         }
+         else if(sourceEvent == star){
+            typed="";
          }
          else if(sourceEvent == letterEnter){
             typed+="\n";
