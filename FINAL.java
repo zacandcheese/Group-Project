@@ -130,6 +130,7 @@ public class FINAL extends JFrame implements ActionListener{
       space = new JButton("Space");
       gucci = new JButton("Gucci Gang");
       star = new JButton("Clear");
+      letterPeriod = new JButton(".");
       
        // Use a GridBagLayout
       GridBagConstraints c = null;
@@ -220,9 +221,12 @@ public class FINAL extends JFrame implements ActionListener{
          add(letterN,c);
          letterN.addActionListener(this);
          add(letterM,c);
-         letterM.addActionListener(this);     
+         letterM.addActionListener(this);
+         add(letterPeriod,c);
+         letterPeriod.addActionListener(this);     
          c.gridwidth = GridBagConstraints.REMAINDER;
-         add(BLANK,c);
+         add(gucci,c);
+         gucci.addActionListener(this);
          
         //FOURTH ROW
          c.gridwidth = 2;
@@ -236,9 +240,7 @@ public class FINAL extends JFrame implements ActionListener{
          add(space,c);
          space.addActionListener(this);
          c.gridwidth = GridBagConstraints.REMAINDER;
-         add(gucci,c);
-         gucci.addActionListener(this);
-         
+         add(BLANK,c);
          //SCROLL TEXT BOX
          output = new JTextArea(10, 10);
          JScrollPane scroll = new JScrollPane(output); 
