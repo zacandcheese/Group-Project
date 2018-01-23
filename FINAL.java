@@ -18,19 +18,6 @@ import java.awt.*;
 public class FINAL extends JFrame implements ActionListener{
    private JLabel person;    
    private JTextField name;  
-   private JButton letterAccent;
-   private JButton letterOne;
-   private JButton letterTwo;
-   private JButton letterThree;
-   private JButton letterFour;
-   private JButton letterFive;
-   private JButton letterSix;
-   private JButton letterSeven;
-   private JButton letterEight;
-   private JButton letterNine;
-   private JButton letterZero;
-   private JButton letterDash;
-   private JButton letterEqua;
    private JButton deleteKey;
    private JButton letterTab;
    private JButton letterQ;
@@ -43,9 +30,6 @@ public class FINAL extends JFrame implements ActionListener{
    private JButton letterI;
    private JButton letterO;
    private JButton letterP;
-   private JButton letterOpBrak;
-   private JButton letterCloBrak;
-   private JButton letterBSlash;
    private JButton letterCapLock;
    private JButton letterA;   
    private JButton letterS;
@@ -57,7 +41,6 @@ public class FINAL extends JFrame implements ActionListener{
    private JButton letterK;
    private JButton letterL;
    private JButton letterSemiCol;
-   private JButton letterApo;
    private JButton letterEnter;
    private JButton letterShiftOne;
    private JButton letterZ;
